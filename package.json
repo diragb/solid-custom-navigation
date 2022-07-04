@@ -1,0 +1,59 @@
+{
+  "name": "solid-custom-navigation",
+  "version": "0.1.0",
+  "description": "Custom navigations for Solid written in Typescript. Implement custom page transition logic and add ✨ animations ✨",
+  "main": "dist/index/index.common.js",
+  "module": "dist/index/index.module.js",
+  "types": "dist/index/index.d.ts",
+  "author": "Dirag Biswas (https://github.com/diragb)",
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/diragb"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diragb/solid-custom-navigation"
+  },
+  "bugs": {
+    "url": "https://github.com/diragb/solid-custom-navigation/issues"
+  },
+  "homepage": "https://github.com/diragb/solid-custom-navigation#readme",
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  },
+  "dependencies": {
+    "solid-styled-components": "^0.28.4"
+  },
+  "peerDependencies": {
+    "solid-app-router": "^0.4.1",
+    "solid-js": "^1.4.6"
+  },
+  "exports": {
+    ".": {
+      "solid": "./dist/index/index.jsx",
+      "import": "./dist/index/index.module.js",
+      "browser": "./dist/index/index.module.js",
+      "require": "./dist/index/index.common.js",
+      "node": "./dist/index/index.common.js"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "navigation",
+    "animation",
+    "solid",
+    "custom navigation",
+    "ui",
+    "typescript"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild-plugin-solid": "^0.4.2",
+    "rollup": "^2.75.7",
+    "rollup-preset-solid": "^1.4.0",
+    "typescript": "^4.7.4"
+  }
+}
