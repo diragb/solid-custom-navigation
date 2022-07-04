@@ -7,7 +7,7 @@
 
 ***Get, Set, Go!***
 
-Custom navigations for Solid, written in Typescript. Implement custom page transition logic and add ✨ ***animations*** ✨.
+Custom navigations for Solid, written in Typescript. Implement custom page transition logic and ✨ ***animations*** ✨.
 
 **Note**: This package relies on [`solid-app-router`](https://www.npmjs.com/package/solid-app-router).
 
