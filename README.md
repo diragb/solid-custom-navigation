@@ -44,12 +44,9 @@ const Page: Component = () => {
 Get the current animation string.
 
 ### set
-`Setter<-1 | 0 | 1>`
+`Setter<'UNMOUNTED' | 'DEFAULT' | 'MOUNTED'>`
 
-Set the current component transition state. Here, 
-- `UNMOUNTED = -1`
-- `DEFAULT = 0`
-- `MOUNTED = 1`
+Set the current component transition state.
 
 ### go
 `async (to: string, opts?: Partial<NavigateOptions<unknown>> | undefined)`
@@ -57,7 +54,7 @@ Set the current component transition state. Here,
 Navigate to a route. Pretty much an alias for [`navigate`](https://github.com/solidjs/solid-app-router#usenavigate)'s props.
 
 ### getState
-`Accessor<-1 | 0 | 1>`
+`Accessor<'UNMOUNTED' | 'DEFAULT' | 'MOUNTED'>`
 
 Get the current component transition state.
 
@@ -91,7 +88,7 @@ The number of milliseconds to wait before navigating away (and calling **onClean
 
 
 ### customAnimations
-`{ [ -1 | 0 | 1 ]: string }` - **OPTIONAL**
+`{ [ 'UNMOUNTED' | 'DEFAULT' | 'MOUNTED' ]: string }` - **OPTIONAL**
 
 Add custom animation strings.
 
@@ -103,8 +100,8 @@ const customMountAnimation = keyframes``
 
 // And then later on..
 useCustomNavigation(useNavigate(), {
-  [ -1 ]: `${ customUnmountAnimation } 0.5s ease`,
-  [ 1 ]: `${ customMountAnimation } 0.5s ease`
+  UNMOUNTED: `${ customUnmountAnimation } 0.5s ease`,
+  MOUNTED: `${ customMountAnimation } 0.5s ease`
 })
 ```
 

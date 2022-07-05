@@ -18,8 +18,8 @@ export interface UseNavigateOptions {
 }
 
 export enum STATE {
-  DEFAULT = 'DEFAULT',
   UNMOUNTED = 'UNMOUNTED',
+  DEFAULT = 'DEFAULT',
   MOUNTED = 'MOUNTED'
 }
 
