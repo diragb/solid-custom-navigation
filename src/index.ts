@@ -25,19 +25,27 @@ export enum STATE {
 
 
 // Constants:
-export const stateToAnimation = {
-  [ STATE.UNMOUNTED ]: `${ fadeOut(1) } 0.5s ease`,
+export const defaultStateToAnimation = (transitionDelay?: number) => ({
+  [ STATE.UNMOUNTED ]: `${ fadeOut(1) } ${ transitionDelay ?? 500 }ms ease`,
   [ STATE.DEFAULT ]: 'none',
-  [ STATE.MOUNTED ]: `${ fadeIn(1) } 0.5s ease`
-}
+  [ STATE.MOUNTED ]: `${ fadeIn(1) } ${ transitionDelay ?? 500 }ms ease`
+})
 
 
 // Functions:
 export const sleep = async (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout))
 
 const useNavigation = (navigate: Navigator, options?: UseNavigateOptions) => {
+  // Constants:
+  const stateToAnimation = {
+    ...defaultStateToAnimation(options?.transitionDelay),
+    ...options?.customAnimations
+  }
+
+  // Signals:
   const [ navigationState, setNavigationState ] = createSignal<STATE>(STATE.DEFAULT)
 
+  // Effects:
   _onMount(() => {
     setNavigationState(STATE.MOUNTED)
     if (options?.onMount) options?.onMount()
@@ -48,6 +56,7 @@ const useNavigation = (navigate: Navigator, options?: UseNavigateOptions) => {
     if (options?.onCleanup) options?.onCleanup()
   })
 
+  // Return:
   return {
     get: () => stateToAnimation[ navigationState() ],
     set: setNavigationState,
