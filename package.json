@@ -1,6 +1,6 @@
 {
   "name": "solid-custom-navigation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Custom navigations for Solid written in Typescript. Implement custom page transition logic and ✨ animations ✨",
   "main": "dist/index/index.common.js",
   "module": "dist/index/index.module.js",
@@ -30,7 +30,7 @@
   },
   "exports": {
     ".": {
-      "solid": "./dist/index/index.jsx",
+      "solid": "./dist/index/index.js",
       "import": "./dist/index/index.module.js",
       "browser": "./dist/index/index.module.js",
       "require": "./dist/index/index.common.js",
