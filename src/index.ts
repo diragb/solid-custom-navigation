@@ -14,13 +14,13 @@ export interface UseNavigateOptions {
   onTransition?: () => void
   onCleanup?: () => void
   transitionDelay?: number,
-  customAnimations: { [ key in STATE ]: string }
+  customAnimations?: { [ key in STATE ]: string }
 }
 
 export enum STATE {
-  UNMOUNTED = -1,
-  DEFAULT = 0,
-  MOUNTED = 1
+  DEFAULT = 'DEFAULT',
+  UNMOUNTED = 'UNMOUNTED',
+  MOUNTED = 'MOUNTED'
 }
 
 
@@ -43,7 +43,10 @@ const useNavigation = (navigate: Navigator, options?: UseNavigateOptions) => {
     if (options?.onMount) options?.onMount()
   })
 
-  _onCleanup(options?.onCleanup ?? (() => {}))
+  _onCleanup(() => {
+    if (navigationState() !== STATE.UNMOUNTED) setNavigationState(STATE.UNMOUNTED)
+    if (options?.onCleanup) options?.onCleanup()
+  })
 
   return {
     get: () => stateToAnimation[ navigationState() ],
